@@ -15,61 +15,42 @@
 
 ## 🔥 What is Bixx?
 
-**Bixx AI** is a web-based AI interface built to deliver fast, intelligent conversations through a sleek and intuitive UI. Designed by **Omer AI**, it's optimized for speed, clarity, and future integrations. No signup, no clutter — just pure AI flow.
+**Bixx AI** is a fast, intelligent, and minimal AI chat interface designed for rapid access to powerful conversational AI — with **no login, no setup, and zero friction**. All intelligence, no distractions.
 
 ---
 
 ## ✨ Features
 
-- ⚡ Fast AI responses with real-time typing effect  
-- 🎯 Minimal UI, optimized for desktop + mobile  
-- 🧠 Smart memory — continues conversation naturally  
-- 🔒 Privacy focused (no data tracking)  
-- 📱 Mobile responsive  
-- 💬 Simple, clean chat UX  
+- ⚡ Fast real-time AI chat  
+- 🎯 Ultra-clean UI, responsive on all screens  
+- 🧠 Memory support: continues conversations naturally  
+- 🖼️ Smart image generation (when prompted)  
+- 🔐 Privacy focused — no user tracking or storage  
+- 🧊 No framework bloat, pure static frontend  
 
 ---
 
-## 📁 Project Structure
-
-This repo contains:
+## 📁 Project Layout
 
 ```
-/frontend    → Static web client (HTML/CSS/JS)  
-/api         → Vercel backend endpoints (chat handling)
+/frontend    → Static HTML/CSS/JS site  
+/api         → Vercel serverless backend (private logic)
 ```
 
-🛠️ Deployed seamlessly on [Vercel](https://vercel.com), built for instant scaling.
+> The backend logic includes secured AI logic and media processing. It’s deployed privately and not exposed for public usage or local dev.
 
 ---
 
-## 🚀 Getting Started (Local Dev)
+## 🚀 Deploying
 
-```bash
-git clone https://github.com/YOUR-USERNAME/bixx
-cd bixx
+Frontend is fully static — host it anywhere (Vercel, Netlify, GitHub Pages).
 
-# Install dependencies (if any)
-npm install
-
-# Run locally (Vercel CLI or simple HTTP server)
-vercel dev
-# or
-npx serve frontend
-```
-
-> ⚠️ Production setup is deployed via **Vercel** – no server required.
+> Backend is **already deployed** on Vercel with private API keys and AI logic.  
+> ⚠️ Local dev is **not supported** for backend components.
 
 ---
 
-## 🧠 Credits
-
-Crafted with 🔥 by **Omer AI**  
-Website: [bixx.vercel.app](https://bixx.vercel.app/)
-
----
-
-## 🌐 Try It Now
+## 🌐 Live Site
 
 <p>
   <a href="https://bixx.vercel.app/" target="_blank">
@@ -79,6 +60,13 @@ Website: [bixx.vercel.app](https://bixx.vercel.app/)
 
 ---
 
+## 🧠 Credits
+
+Crafted with 💡 by **Omer AI**  
+Live: [bixx.vercel.app](https://bixx.vercel.app/)
+
+---
+
 ## 📜 License
 
-MIT — free to use, remix, and deploy.
+MIT — use it, remix it, launch your own.
