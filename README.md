@@ -1,4 +1,4 @@
-# 🚀 Bixx AI Chatbot &nbsp; <img src="https://img.shields.io/badge/AI%20Powered-OpenAI-blueviolet?style=flat-square&logo=openai" align="right" height="28"/>
+# 🚀 Bixx AI Chatbot &nbsp; <img src="https://img.shields.io/badge/Built%20by-Omer%20AI-2563eb?style=flat-square" align="right" height="28"/>
 
 ---
 
