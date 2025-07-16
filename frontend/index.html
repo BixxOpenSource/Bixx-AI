@@ -39,36 +39,36 @@
     <style>
 :root {
   --main-font-family: 'Merriweather', serif;
-  --color-bg-dark: #18191a;
-  --color-bg-light: #ffffff;
+  --color-bg-dark: #161618;
+  --color-bg-light: #fff;
   --color-card-dark: #242628;
-  --color-card-light: #e0e0e0;
+  --color-card-light: #242628;
   --color-header-dark: #18191a;
-  --color-header-light: #ffffff;
+  --color-header-light: #18191a;
   --color-hover-dark: #2c2e30;
-  --color-hover-light: #cccccc;
+  --color-hover-light: #2c2e30;
   --color-input-dark: #161618;
-  --color-input-light: #f5f5f5;
+  --color-input-light: #161618;
   --color-text-dark: #fff;
-  --color-text-light: #333;
+  --color-text-light: #fff;
   --color-border-dark: #4a5568;
-  --color-border-light: #bdbdbd;
+  --color-border-light: #4a5568;
   --color-btn-bg-dark: #242628;
-  --color-btn-bg-light: #fff;
+  --color-btn-bg-light: #242628;
   --color-btn-text-dark: #fff;
-  --color-btn-text-light: #333;
+  --color-btn-text-light: #fff;
   --color-btn-border-dark: #4a5568;
-  --color-btn-border-light: #bdbdbd;
+  --color-btn-border-light: #4a5568;
 }
 html, body {
   font-family: var(--main-font-family) !important;
 }
 body {
-  background: var(--color-bg-dark);
+  background: var(--color-bg-dark) !important;
   color: var(--color-text-dark);
 }
 body.light-theme {
-  background: var(--color-bg-light);
+  background: var(--color-bg-light) !important;
   color: var(--color-text-light);
 }
 
@@ -76,14 +76,17 @@ body.light-theme {
 .input-container, .custom-modal-box, .auth-modal-content, .profile-modal, .dropdown-menu, .user-message, .ai-message, .error-message, .loading-icon, .think-button, .circle-button, .copy-button, .example-button, .bg-img-btn, .input-text, .message-container, .title, .example-buttons, .auth-modal, .auth-modal-content, .chatList {
   font-family: var(--main-font-family) !important;
 }
-.input-container {
-  background: var(--color-card-dark);
-  color: var(--color-text-dark);
-  transition: background 0.3s, color 0.3s;
+body:not(.light-theme) .input-container, body:not(.light-theme) .input-container.moved-down, body:not(.light-theme) #inputContainer, body:not(.light-theme) #inputContainer.moved-down {
+  background: #000 !important;
+  color: #fff;
 }
-body.light-theme .input-container {
-  background: var(--color-card-light);
-  color: var(--color-text-light);
+body:not(.light-theme) .input-textarea {
+  background: #000 !important;
+  color: #fff;
+}
+body:not(.light-theme) .input-textarea::placeholder {
+  color: #222;
+  opacity: 1;
 }
 .custom-modal-box, .auth-modal-content {
   background: var(--color-card-dark);
@@ -112,8 +115,8 @@ input, textarea, select {
   font-family: var(--main-font-family) !important;
 }
 body.light-theme input, body.light-theme textarea, body.light-theme select {
-  background: var(--color-input-light);
-  color: var(--color-text-light);
+  background: #fff !important;
+  color: #000 !important;
 }
 .user-message, .ai-message {
   background: var(--color-card-dark);
@@ -122,6 +125,11 @@ body.light-theme input, body.light-theme textarea, body.light-theme select {
 body.light-theme .user-message, body.light-theme .ai-message {
   background: var(--color-card-light);
   color: var(--color-text-light);
+}
+body:not(.light-theme) .user-message,
+body:not(.light-theme) .ai-message {
+  background: #000 !important;
+  color: #fff !important;
 }
 /* Remove inline styles for modal and buttons, use classes instead */
 
@@ -766,7 +774,7 @@ body.light-theme .user-message, body.light-theme .ai-message {
             right: -4px;
             bottom: -4px;
             border-radius: 30px;
-            background: #242628;
+            background: #fff;
             z-index: -1;
 
         }
@@ -810,27 +818,66 @@ body.light-theme .user-message, body.light-theme .ai-message {
         /* Fade-in overlay for background image */
 
     </style>
+    <script>
+function setFontFamily(font) {
+  let fontFamily;
+  switch (font) {
+    case 'merriweather': fontFamily = "Merriweather, serif"; break;
+    case 'inter': fontFamily = "Inter, Arial, sans-serif"; break;
+    case 'arial': fontFamily = "Arial, Helvetica, sans-serif"; break;
+    case 'serif': fontFamily = "serif"; break;
+    case 'sans-serif': fontFamily = "sans-serif"; break;
+    case 'roboto': fontFamily = "Roboto, Arial, sans-serif"; break;
+    case 'georgia': fontFamily = "Georgia, serif"; break;
+    case 'courier': fontFamily = "'Courier New', Courier, monospace"; break;
+    case 'comic': fontFamily = "'Comic Sans MS', 'Comic Sans', cursive, sans-serif"; break;
+    case 'times': fontFamily = "'Times New Roman', Times, serif"; break;
+    case 'verdana': fontFamily = "Verdana, Geneva, sans-serif"; break;
+    case 'tahoma': fontFamily = "Tahoma, Geneva, sans-serif"; break;
+    case 'trebuchet': fontFamily = "'Trebuchet MS', Helvetica, sans-serif"; break;
+    case 'lucida': fontFamily = "'Lucida Console', Monaco, monospace"; break;
+    default: fontFamily = font;
+  }
+  document.documentElement.style.setProperty('--main-font-family', fontFamily);
+}
+      // Early theme detection: set class before CSS loads
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme === 'light') {
+            document.documentElement.classList.add('light-theme');
+            document.body && document.body.classList.add('light-theme');
+          } else {
+            document.documentElement.classList.remove('light-theme');
+            document.body && document.body.classList.remove('light-theme');
+          }
+        } catch(e){}
+      })();
+    </script>
 </head>
 <body class="bg-dark-bg m-0 h-screen flex flex-col font-merriweather font-normal overflow-hidden transition-colors duration-300 relative">
 
-    <div class="flex justify-end items-center px-5 py-2.5 sticky top-0 bg-dark-header z-10 transition-colors duration-300 flex-shrink-0 h-15 light-theme:bg-light-header">
+    <div class="flex justify-end items-center px-5 py-2.5 sticky top-0 bg-dark-header z-10 transition-colors duration-300 flex-shrink-0 h-15">
         <div class="relative inline-block flex items-center gap-2">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;"><i class="fab fa-github" style="font-size:22px;color:#fff;"></i></a>
-            <div class="bg-white rounded-full w-10 h-10 flex justify-center items-center text-black text-xl cursor-pointer transition-colors duration-300 light-theme:bg-gray-800 light-theme:text-white" onclick="toggleDropdown()">
+            <a href="https://github.com/BixxOpenSource/Bixx-AI" target="_blank" rel="noopener noreferrer" title="GitHub" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;"><i class="fab fa-github" style="font-size:36px;color:#fff;"></i></a>
+            <div class="bg-white rounded-full w-10 h-10 flex justify-center items-center text-black text-xl cursor-pointer transition-colors duration-300" onclick="toggleDropdown()">
                 <i class="fas fa-user"></i>
             </div>
             <button class="ml-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm font-semibold shadow transition hover:bg-blue-700" onclick="openCustomizeModal()">Customize ✨</button>
-            <div class="hidden absolute top-12 right-0 bg-dark-card rounded-lg shadow-lg min-w-36 z-12 transition-colors duration-300 light-theme:bg-light-card" id="dropdownMenu">
-                <div class="px-4 py-2.5 text-white text-sm text-left cursor-default transition-colors duration-300 light-theme:text-gray-800">Free User</div>
-                <button class="px-4 py-2.5 text-white text-sm bg-transparent border-none text-left w-full cursor-pointer font-inter font-normal transition-colors duration-300 light-theme:text-gray-800 hover:bg-dark-hover light-theme:hover:bg-light-hover" onclick="newChat()">New Chat</button>
-                <button class="px-4 py-2.5 text-white text-sm bg-transparent border-none text-left w-full cursor-pointer font-inter font-normal transition-colors duration-300 light-theme:text-gray-800 hover:bg-dark-hover light-theme:hover:bg-light-hover" id="theme-button" onclick="toggleTheme()">Switch to Light Theme</button>
-                <button class="px-4 py-2.5 text-white text-sm bg-transparent border-none text-left w-full cursor-pointer font-inter font-normal transition-colors duration-300 light-theme:text-gray-800 hover:bg-dark-hover light-theme:hover:bg-light-hover" onclick="logout()">Logout</button>
+            <!-- Theme toggle button -->
+            <button id="themeToggleBtn" class="ml-2 px-3 py-1.5 rounded-lg bg-gray-200 text-gray-800 text-lg font-semibold shadow transition hover:bg-gray-300 flex items-center justify-center" title="Toggle theme" style="width:40px;height:40px;">
+              <i id="themeToggleIcon" class="fas fa-moon"></i>
+            </button>
+            <div class="hidden absolute top-12 right-0 bg-dark-card rounded-lg shadow-lg min-w-36 z-12 transition-colors duration-300" id="dropdownMenu">
+                <div class="px-4 py-2.5 text-white text-sm text-left cursor-default transition-colors duration-300">Free User</div>
+                <button class="px-4 py-2.5 text-white text-sm bg-transparent border-none text-left w-full cursor-pointer font-inter font-normal transition-colors duration-300 hover:bg-dark-hover" onclick="newChat()">New Chat</button>
+                <button class="px-4 py-2.5 text-white text-sm bg-transparent border-none text-left w-full cursor-pointer font-inter font-normal transition-colors duration-300 hover:bg-dark-hover" onclick="logout()">Logout</button>
             </div>
         </div>
     </div>
     
 
-    <div class="text-white text-3xl text-center py-5 font-inter font-light absolute top-1/3 left-1/2 transform -translate-x-1/2 z-10 transition-all duration-300 w-11/12 max-w-4xl light-theme:text-gray-800 hidden" id="title">Bixx AI By Omer</div>
+    <div class="text-white text-3xl text-center py-5 font-inter font-light absolute top-1/3 left-1/2 transform -translate-x-1/2 z-10 transition-all duration-300 w-11/12 max-w-4xl light-theme:text-gray-800" id="title">Bixx AI By Omer</div>
     
 
     <div class="flex-grow overflow-y-auto">
@@ -838,13 +885,26 @@ body.light-theme .user-message, body.light-theme .ai-message {
     </div>
     
 
-    <div class="input-container w-11/12 max-w-4xl h-32 bg-dark-card rounded-3xl flex flex-col justify-between p-4 shadow-lg fixed bottom-1/2 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10 transition-all duration-300 border border-white/10 light-theme:bg-light-card light-theme:shadow-md" id="inputContainer">
-        <textarea class="text-gray-300 text-base flex-grow border-none bg-transparent outline-none whitespace-pre-wrap font-inter font-normal transition-colors duration-300 px-2.5 w-full box-border light-theme:text-gray-800" id="userInput" placeholder="Ask Bixx Anything" rows="2" style="resize: none;"></textarea>
-        <div style="position: relative; width: 100%; height: 100%;">
-            <button onclick="sendMessage()" class="bg-white rounded-full w-10 h-10 flex justify-center items-center text-black text-4xl font-bold p-0 border-none cursor-pointer light-theme:bg-gray-800 light-theme:text-white">
-                <img src="up-arrow.png" alt="Send" class="w-5 h-5 object-contain">
-            </button>
-        </div>
+    <div
+      id="inputContainer"
+      class="input-container w-11/12 max-w-4xl h-32 rounded-3xl flex flex-col justify-between p-4 shadow-lg fixed bottom-1/2 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10 transition-all duration-300 border border-white/10"
+    >
+      <textarea
+        id="userInput"
+        class="input-textarea text-base flex-grow border-none outline-none whitespace-pre-wrap font-inter font-normal transition-colors duration-300 px-2.5 w-full box-border rounded-xl resize-none placeholder-gray-400 light-theme:placeholder-gray-500"
+        placeholder="Ask Bixx Anything"
+        rows="2"
+        style="resize: none; padding-right: 48px;"
+      ></textarea>
+      <div style="position: relative; width: 100%; height: 0;">
+        <button
+          onclick="sendMessage()"
+          class="bg-white rounded-full w-10 h-10 flex justify-center items-center text-black text-4xl font-bold p-0 border-none cursor-pointer light-theme:bg-gray-800 light-theme:text-white"
+          style="position: absolute; bottom: 8px; right: 8px; z-index: 2;"
+        >
+          <img src="up-arrow.png" alt="Send" class="w-5 h-5 object-contain" />
+        </button>
+      </div>
     </div>
     
 
@@ -869,27 +929,6 @@ body.light-theme .user-message, body.light-theme .ai-message {
             <i class="fas fa-star text-purple-400" style="color:#AB47BC;"></i>
             Fun Fact
         </button>
-    </div>
-
-
-    <div class="hidden fixed inset-0 bg-black/50 z-50 justify-center items-center" id="profileModal">
-        <div class="bg-dark-card p-6 rounded-xl w-11/12 max-w-96 shadow-xl light-theme:bg-white">
-            <div class="flex justify-between items-center mb-5">
-                <h3 class="text-white text-xl font-semibold m-0 light-theme:text-gray-800">Customize Your Profile</h3>
-                <button class="bg-transparent border-none text-white text-2xl cursor-pointer p-0 light-theme:text-gray-800" onclick="closeProfileModal()">&times;</button>
-            </div>
-            <form id="profileForm" onsubmit="saveProfile(event)">
-                <div class="mb-4">
-                    <label class="block text-white mb-2 text-sm light-theme:text-gray-800" for="userName">Your Name</label>
-                    <input type="text" id="userName" class="w-full p-2.5 border border-white/20 rounded-md bg-dark-input text-white text-sm transition-colors duration-300 light-theme:bg-gray-100 light-theme:border-gray-300 light-theme:text-gray-800 focus:outline-none focus:border-blue-500" placeholder="Enter your name">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-white mb-2 text-sm light-theme:text-gray-800" for="userOccupation">Your Occupation</label>
-                    <input type="text" id="userOccupation" class="w-full p-2.5 border border-white/20 rounded-md bg-dark-input text-white text-sm transition-colors duration-300 light-theme:bg-gray-100 light-theme:border-gray-300 light-theme:text-gray-800 focus:outline-none focus:border-blue-500" placeholder="Enter your occupation">
-                </div>
-                <button type="submit" class="bg-blue-500 text-white border-none py-3 px-6 rounded-md text-sm font-medium cursor-pointer w-full transition-colors duration-300 hover:bg-blue-600">Save Profile</button>
-            </form>
-        </div>
     </div>
 
 
@@ -1199,12 +1238,11 @@ function scrollToBottom() {
         }
 
 document.getElementById('userInput').addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         sendMessage();
-    } else if (e.key === 'Enter' && !e.shiftKey) {
-        // Let Enter insert a newline
     }
+    // Shift+Enter will insert a line break by default
 });
 
         function useExamplePrompt(prompt) {
@@ -1224,18 +1262,6 @@ document.getElementById('userInput').addEventListener('keydown', (e) => {
             chatMessages = [];
             renderMessages();
             moveInputMiddle();
-            const dropdownMenu = document.getElementById('dropdownMenu');
-            if (dropdownMenu) dropdownMenu.classList.add('hidden');
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-            // No need to manually update every element, CSS handles it via variables/classes
-            const themeButton = document.getElementById('theme-button');
-            if (themeButton) {
-            const isLight = document.body.classList.contains('light-theme');
-            themeButton.textContent = isLight ? 'Switch to Dark Theme' : 'Switch to Light Theme';
-            }
             const dropdownMenu = document.getElementById('dropdownMenu');
             if (dropdownMenu) dropdownMenu.classList.add('hidden');
         }
@@ -1388,47 +1414,114 @@ function chooseBg(url) {
       });
     </script>
     <script>
-function setFontFamily(font) {
-  let fontFamily;
-  switch (font) {
-    case 'merriweather': fontFamily = "Merriweather, serif"; break;
-    case 'inter': fontFamily = "Inter, Arial, sans-serif"; break;
-    case 'arial': fontFamily = "Arial, Helvetica, sans-serif"; break;
-    case 'serif': fontFamily = "serif"; break;
-    case 'sans-serif': fontFamily = "sans-serif"; break;
-    case 'roboto': fontFamily = "Roboto, Arial, sans-serif"; break;
-    case 'georgia': fontFamily = "Georgia, serif"; break;
-    case 'courier': fontFamily = "'Courier New', Courier, monospace"; break;
-    case 'comic': fontFamily = "'Comic Sans MS', 'Comic Sans', cursive, sans-serif"; break;
-    case 'times': fontFamily = "'Times New Roman', Times, serif"; break;
-    case 'verdana': fontFamily = "Verdana, Geneva, sans-serif"; break;
-    case 'tahoma': fontFamily = "Tahoma, Geneva, sans-serif"; break;
-    case 'trebuchet': fontFamily = "'Trebuchet MS', Helvetica, sans-serif"; break;
-    case 'lucida': fontFamily = "'Lucida Console', Monaco, monospace"; break;
-    default: fontFamily = font;
+// Theme toggle logic
+function setTheme(theme) {
+  if (theme === 'light') {
+    document.body.classList.add('light-theme');
+    localStorage.setItem('theme', 'light');
+    document.getElementById('themeToggleIcon').className = 'fas fa-moon';
+  } else {
+    document.body.classList.remove('light-theme');
+    localStorage.setItem('theme', 'dark');
+    document.getElementById('themeToggleIcon').className = 'fas fa-sun';
   }
-  document.documentElement.style.setProperty('--main-font-family', fontFamily);
 }
+
+// On load, set theme from localStorage
+(function() {
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.addEventListener('DOMContentLoaded', function() {
+    setTheme(savedTheme);
+    var btn = document.getElementById('themeToggleBtn');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        const isLight = document.body.classList.contains('light-theme');
+        setTheme(isLight ? 'dark' : 'light');
+      });
+    }
+  });
+})();
 </script>
 
 <style>
-.input-container {
-  background: var(--color-card-dark);
-  color: var(--color-text-dark);
-  transition: background 0.3s, color 0.3s;
+:root {
+  --main-font-family: 'Merriweather', serif;
+  --color-bg-dark: #161618;
+  --color-bg-light: #fff;
+  --color-card-dark: #242628;
+  --color-card-light: #242628;
+  --color-header-dark: #18191a;
+  --color-header-light: #18191a;
+  --color-hover-dark: #2c2e30;
+  --color-hover-light: #2c2e30;
+  --color-input-dark: #161618;
+  --color-input-light: #161618;
+  --color-text-dark: #fff;
+  --color-text-light: #fff;
+  --color-border-dark: #4a5568;
+  --color-border-light: #4a5568;
+  --color-btn-bg-dark: #242628;
+  --color-btn-bg-light: #242628;
+  --color-btn-text-dark: #fff;
+  --color-btn-text-light: #fff;
+  --color-btn-border-dark: #4a5568;
+  --color-btn-border-light: #4a5568;
 }
-body.light-theme .input-container {
-  background: var(--color-card-light);
-  color: var(--color-text-light);
+.input-container, .input-container.moved-down, #inputContainer, #inputContainer.moved-down {
+  background: #fff !important;
+  color: #000 !important;
+}
+.input-textarea {
+  background: #fff !important;
+  color: #000 !important;
+}
+.input-textarea::placeholder {
+  color: #000 !important;
+  opacity: 1;
+}
+body:not(.light-theme) .input-container, body:not(.light-theme) .input-container.moved-down, body:not(.light-theme) #inputContainer, body:not(.light-theme) #inputContainer.moved-down {
+  background: #000 !important;
+  color: #fff !important;
+}
+body:not(.light-theme) .input-textarea {
+  background: #000 !important;
+  color: #fff !important;
+}
+body:not(.light-theme) .input-textarea::placeholder {
+  color: #fff !important;
+  opacity: 1;
+}
+body.light-theme .input-container::after {
+  background: #fff;
+}
+body:not(.light-theme) .input-container::after {
+  background: #000;
+}
+body.light-theme #inputContainer button,
+body.light-theme .input-container button {
+  background: #fff !important;
+  color: #000 !important;
+  border: 2px solid #000 !important;
+  box-shadow: none !important;
+}
+body.light-theme #inputContainer button img,
+body.light-theme .input-container button img {
+  filter: none !important;
+}
+body.light-theme #title {
+  color: #000 !important;
+}
+body.light-theme .example-button,
+body.light-theme .think-button {
+  background: #fff !important;
+  color: #000 !important;
+  border: 2px solid #000 !important;
+  box-shadow: none !important;
 }
 .example-buttons, .example-button {
   background: var(--color-card-dark);
   color: var(--color-text-dark);
   transition: background 0.3s, color 0.3s;
-}
-body.light-theme .example-buttons, body.light-theme .example-button {
-  background: var(--color-card-light);
-  color: var(--color-text-light);
 }
 </style>
 </body>
