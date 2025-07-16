@@ -1,72 +1,52 @@
+# Bixx AI Chatbot
 
-<h1 align="center">🌐 Bixx AI</h1>
-<p align="center">
-  <b>Next-gen AI Experience — Made for Everyone.</b><br>
-  <sub>by Omer AI</sub>
-</p>
-
-<p align="center">
-  <a href="https://bixx.vercel.app/" target="_blank">
-    <img alt="Visit Bixx" src="https://img.shields.io/badge/Launch%20Bixx-%2300C853?style=for-the-badge&logo=vercel&logoColor=white" />
-  </a>
-</p>
+🚀 **Bixx AI** is a modern, clean chatbot frontend + backend starter. Built by Omer AI.
 
 ---
 
-## 🔥 What is Bixx?
+## Features
 
-**Bixx AI** is a fast, intelligent, and minimal AI chat interface designed for rapid access to powerful conversational AI — with **no login, no setup, and zero friction**. All intelligence, no distractions.
-
----
-
-## ✨ Features
-
-- ⚡ Fast real-time AI chat  
-- 🎯 Ultra-clean UI, responsive on all screens  
-- 🧠 Memory support: continues conversations naturally  
-- 🖼️ Smart image generation (when prompted)  
-- 🔐 Privacy focused — no user tracking or storage  
-- 🧊 No framework bloat, pure static frontend  
+* Responsive, minimal frontend UI
+* Simple Express backend serving frontend & chat API
+* Placeholder spot to plug in YOUR AI logic (OpenAI, Groq, Deepseek, or any AI API)
+* Fully customizable, no fluff, no mid
 
 ---
 
-## 📁 Project Layout
+## Setup & Run
 
-```
-/frontend    → Static HTML/CSS/JS site  
-/api         → Vercel serverless backend (private logic)
-```
-
-> The backend logic includes secured AI logic and media processing. It’s deployed privately and not exposed for public usage or local dev.
-
----
-
-## 🚀 Deploying
-
-Frontend is fully static — host it anywhere (Vercel, Netlify, GitHub Pages).
-
-> Backend is **already deployed** on Vercel with private API keys and AI logic.  
-> ⚠️ Local dev is **not supported** for backend components.
-
----
-
-## 🌐 Live Site
-
-<p>
-  <a href="https://bixx.vercel.app/" target="_blank">
-    <img src="https://img.shields.io/badge/Open%20Bixx-%2300C853?style=for-the-badge&logo=vercel&logoColor=white" alt="Launch Bixx" />
-  </a>
-</p>
+1.  **Download** or clone the repository:
+    ```bash
+    git clone [https://github.com/YOUR_USERNAME/Bixx-AI-Chatbot.git](https://github.com/YOUR_USERNAME/Bixx-AI-Chatbot.git) # Replace with your repo URL
+    ```
+2.  Navigate into the project directory:
+    ```bash
+    cd Bixx-AI-Chatbot
+    ```
+3.  Install dependencies:
+    ```bash
+    npm install
+    ```
+4.  Run the server:
+    ```bash
+    node server.js
+    ```
+5.  Open `http://localhost:3000` in your browser
 
 ---
 
-## 🧠 Credits
+## How to add AI logic
 
-Crafted with 💡 by **Omer AI**  
-Live: [bixx.vercel.app](https://bixx.vercel.app/)
+The `backend server.js` includes a simple API endpoint at `/api/chat`:
 
----
+```javascript
+app.post('/api/chat', async (req, res) => {
+  // Extract user message here
 
-## 📜 License
+  // Prepare messages array
 
-MIT — use it, remix it, launch your own.
+  // *** THIS IS WHERE YOU INSERT YOUR AI CALL ***
+  // For example, call OpenAI API or your favorite AI backend,
+  // then return the AI's response in JSON:
+  // res.json({ reply: aiReply });
+});
