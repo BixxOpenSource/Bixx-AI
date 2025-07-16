@@ -1,15 +1,21 @@
 # Bixx AI Chatbot
 
-🚀 **Bixx AI** is a modern, clean chatbot frontend + backend starter. Built by Omer AI.
+---
+
+**🚀 Bixx AI** is a modern, clean chatbot frontend + backend starter. Built by Omer AI.
+
+<br>
+
+[![Visit Bixx AI Live](https://img.shields.io/badge/Visit%20Bixx%20AI%20Live-blue?style=for-the-badge&logo=vercel)](https://bixx.vercel.app/)
 
 ---
 
 ## Features
 
-* Responsive, minimal frontend UI
-* Simple Express backend serving frontend & chat API
-* Placeholder spot to plug in YOUR AI logic (OpenAI, Groq, Deepseek, or any AI API)
-* Fully customizable, no fluff, no mid
+* **Responsive, minimal frontend UI**
+* **Simple Express backend** serving frontend & chat API
+* **Placeholder spot** to plug in YOUR AI logic (OpenAI, Groq, Deepseek, or any AI API)
+* **Fully customizable**, no fluff, no mid
 
 ---
 
