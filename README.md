@@ -5,8 +5,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Live%20Demo-Bixx%20AI-2563eb?style=for-the-badge&logo=vercel" alt="Live Demo"/>
   <a href="https://bixx.vercel.app/"><img src="https://img.shields.io/badge/Visit%20Bixx%20AI%20Live-blue?style=for-the-badge&logo=vercel" alt="Visit Bixx AI Live"></a>
-  <img src="https://img.shields.io/github/stars/BixxOpenSource/Bixx?style=for-the-badge" alt="Stars"/>
-  <img src="https://img.shields.io/github/license/BixxOpenSource/Bixx?style=for-the-badge" alt="License"/>
+  <img src="https://img.shields.io/github/stars/BixxOpenSource/Bixx-AI?style=for-the-badge" alt="Stars"/>
+  <img src="https://img.shields.io/github/license/BixxOpenSource/Bixx-AI?style=for-the-badge" alt="License"/>
 </p>
 
 ---
