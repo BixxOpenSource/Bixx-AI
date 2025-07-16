@@ -48,8 +48,8 @@
 
 1. **Clone the repo:**
     ```bash
-    git clone https://github.com/YOUR_USERNAME/Bixx-AI-Chatbot.git
-    cd Bixx-AI-Chatbot
+    git clone https://github.com/BixxOpenSource/Bixx-AI
+    cd Bixx-AI
     ```
 2. **Install dependencies:**
     ```bash
