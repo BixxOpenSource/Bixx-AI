@@ -1,0 +1,1435 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-8521118318870141">
+    <title>Bixx AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> //TestPush
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'merriweather': ['Merriweather', 'serif'],
+                        'inter': ['Inter', 'Inter Fallback', 'Roboto', 'Open Sans', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        'dark': {
+                            'bg': 'rgb(24, 25, 26)',
+                            'header': 'rgb(24, 25, 26)',
+                            'card': '#242628',
+                            'hover': '#2c2e30',
+                            'input': '#161618',
+                        },
+                        'light': {
+                            'bg': '#ffffff',
+                            'header': '#ffffff',
+                            'card': '#e0e0e0',
+                            'hover': '#cccccc',
+                            'input': '#f5f5f5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+:root {
+  --main-font-family: 'Merriweather', serif;
+  --color-bg-dark: #18191a;
+  --color-bg-light: #ffffff;
+  --color-card-dark: #242628;
+  --color-card-light: #e0e0e0;
+  --color-header-dark: #18191a;
+  --color-header-light: #ffffff;
+  --color-hover-dark: #2c2e30;
+  --color-hover-light: #cccccc;
+  --color-input-dark: #161618;
+  --color-input-light: #f5f5f5;
+  --color-text-dark: #fff;
+  --color-text-light: #333;
+  --color-border-dark: #4a5568;
+  --color-border-light: #bdbdbd;
+  --color-btn-bg-dark: #242628;
+  --color-btn-bg-light: #fff;
+  --color-btn-text-dark: #fff;
+  --color-btn-text-light: #333;
+  --color-btn-border-dark: #4a5568;
+  --color-btn-border-light: #bdbdbd;
+}
+html, body {
+  font-family: var(--main-font-family) !important;
+}
+body {
+  background: var(--color-bg-dark);
+  color: var(--color-text-dark);
+}
+body.light-theme {
+  background: var(--color-bg-light);
+  color: var(--color-text-light);
+}
+
+/* Update all major containers, modals, buttons, inputs, etc. */
+.input-container, .custom-modal-box, .auth-modal-content, .profile-modal, .dropdown-menu, .user-message, .ai-message, .error-message, .loading-icon, .think-button, .circle-button, .copy-button, .example-button, .bg-img-btn, .input-text, .message-container, .title, .example-buttons, .auth-modal, .auth-modal-content, .chatList {
+  font-family: var(--main-font-family) !important;
+}
+.input-container {
+  background: var(--color-card-dark);
+  color: var(--color-text-dark);
+  transition: background 0.3s, color 0.3s;
+}
+body.light-theme .input-container {
+  background: var(--color-card-light);
+  color: var(--color-text-light);
+}
+.custom-modal-box, .auth-modal-content {
+  background: var(--color-card-dark);
+  color: var(--color-text-dark);
+  border: 1.5px solid var(--color-border-dark);
+}
+body.light-theme .custom-modal-box, body.light-theme .auth-modal-content {
+  background: var(--color-card-light);
+  color: var(--color-text-light);
+  border: 1.5px solid var(--color-border-light);
+}
+button, .example-button, .think-button, .circle-button, .copy-button, .bg-img-btn {
+  background: var(--color-btn-bg-dark);
+  color: var(--color-btn-text-dark);
+  border: 1px solid var(--color-btn-border-dark);
+  font-family: var(--main-font-family) !important;
+}
+body.light-theme button, body.light-theme .example-button, body.light-theme .think-button, body.light-theme .circle-button, body.light-theme .copy-button, body.light-theme .bg-img-btn {
+  background: var(--color-btn-bg-light);
+  color: var(--color-btn-text-light);
+  border: 1px solid var(--color-btn-border-light);
+}
+input, textarea, select {
+  background: var(--color-input-dark);
+  color: var(--color-text-dark);
+  font-family: var(--main-font-family) !important;
+}
+body.light-theme input, body.light-theme textarea, body.light-theme select {
+  background: var(--color-input-light);
+  color: var(--color-text-light);
+}
+.user-message, .ai-message {
+  background: var(--color-card-dark);
+  color: var(--color-text-dark);
+}
+body.light-theme .user-message, body.light-theme .ai-message {
+  background: var(--color-card-light);
+  color: var(--color-text-light);
+}
+/* Remove inline styles for modal and buttons, use classes instead */
+
+        body::-webkit-scrollbar-track {
+            background: #161618;
+        }
+        body.light-theme::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: #242628;
+            border-radius: 4px;
+        }
+        body.light-theme::-webkit-scrollbar-thumb {
+            background: #e0e0e0;
+        }
+        body::-webkit-scrollbar-thumb:hover {
+            background: #2c2e30;
+        }
+        body.light-theme::-webkit-scrollbar-thumb:hover {
+            background: #cccccc;
+        }
+        body {
+            scrollbar-width: thin;
+            scrollbar-color: #212121 #212121;
+            -webkit-overflow-scrolling: touch;
+        }
+        body.light-theme {
+            scrollbar-color: #e0e0e0 #f5f5f5;
+        }
+        
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .image-loading-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            aspect-ratio: 1/1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #242628;
+            border-radius: 12px;
+            border: 2px dashed #4a9eff;
+            margin: 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .light-theme .image-loading-placeholder {
+            background-color: #e0e0e0;
+            border-color: #2563eb;
+        }
+        
+        .image-loading-placeholder .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #4a9eff;
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+        
+        .light-theme .image-loading-placeholder .loading-spinner {
+            border-color: #2563eb;
+            border-top-color: transparent;
+        }
+        
+        .image-loading-placeholder p {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .light-theme .image-loading-placeholder p {
+            color: #333333;
+        }
+        
+        .generated-image-container {
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .generated-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .generated-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .light-theme .generated-image {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        
+
+        
+
+        .user-message {
+            color: white;
+            font-size: 16px;
+            text-align: right;
+            margin: 0;
+            overflow-wrap: break-word;
+            max-width: 90%;
+            align-self: flex-end;
+            background-color: #242628;
+            padding: 10px 15px;
+            border-radius: 15px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .light-theme .user-message {
+            color: #333333;
+            background-color: #e0e0e0;
+        }
+        .ai-message {
+            color: white;
+            font-size: 16px;
+            text-align: left;
+            margin: 0 0 8px 0;
+            overflow-wrap: break-word;
+            max-width: 90%;
+            align-self: flex-start;
+            word-spacing: 2px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            z-index: 1;
+            background-color: #242628;
+            padding: 10px 15px;
+            border-radius: 15px;
+        }
+        .light-theme .ai-message {
+            color: #333333;
+            background-color: #e0e0e0;
+        }
+        
+
+        
+
+        .error-message {
+            color: #ff5555;
+            font-size: 14px;
+            text-align: left;
+            margin: 0;
+            max-width: 90%;
+            align-self: flex-start;
+            padding: 10px 15px;
+            background-color: #242628;
+            border-radius: 8px;
+            z-index: 1;
+        }
+        .light-theme .error-message {
+            color: #cc0000;
+            background-color: #e0e0e0;
+        }
+        .loading-icon {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #ffffff;
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 15px 10px;
+            align-self: flex-start;
+            display: block !important;
+            z-index: 1;
+        }
+        .light-theme .loading-icon {
+            border: 3px solid #333333;
+            border-top: 3px solid transparent;
+        }
+        
+
+        .ai-message pre {
+            background-color: #1e1e1e !important;
+            color: #e6e6e6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .light-theme .ai-message pre {
+            background-color: #f5f5f5 !important;
+            color: #333;
+        }
+        
+
+        .ai-message code {
+            background-color: #2d2d2d;
+            color: #e6e6e6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95em;
+            word-break: break-word;
+        }
+        .light-theme .ai-message code {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        
+
+        .ai-message h1 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin: 16px 0 8px 0;
+            color: #ffffff;
+        }
+        .ai-message h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 14px 0 6px 0;
+            color: #ffffff;
+        }
+        .ai-message h3 {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin: 12px 0 6px 0;
+            color: #ffffff;
+        }
+        .light-theme .ai-message h1,
+        .light-theme .ai-message h2,
+        .light-theme .ai-message h3 {
+            color: #333333;
+        }
+        
+
+        .ai-message p {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        
+
+        .ai-message a {
+            color: #4a9eff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .ai-message a:hover {
+            color: #357abd;
+            text-decoration: underline;
+        }
+        .light-theme .ai-message a {
+            color: #2563eb;
+        }
+        .light-theme .ai-message a:hover {
+            color: #1d4ed8;
+        }
+        
+
+        .ai-message ul, .ai-message ol {
+            margin: 8px 0;
+            padding-left: 24px;
+        }
+        .ai-message li {
+            margin: 4px 0;
+            line-height: 1.5;
+        }
+        
+
+        .ai-message blockquote {
+            border-left: 4px solid #4a9eff;
+            margin: 12px 0;
+            padding: 8px 16px;
+            background-color: rgba(74, 158, 255, 0.1);
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+        }
+        .light-theme .ai-message blockquote {
+            background-color: rgba(37, 99, 235, 0.1);
+            border-left-color: #2563eb;
+        }
+        
+
+        .ai-message hr {
+            border: none;
+            height: 1px;
+            background-color: #444;
+            margin: 16px 0;
+        }
+        .light-theme .ai-message hr {
+            background-color: #ddd;
+        }
+        
+
+        .ai-message del {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+
+        .ai-message u {
+            text-decoration: underline;
+        }
+        .ai-message pre code {
+            font-family: inherit;
+            font-size: 14px;
+            line-height: inherit;
+            color: #d4d4d4;
+            display: block;
+            white-space: pre;
+            padding: 0;
+            margin: 0;
+            tab-size: 4;
+        }
+        .light-theme .ai-message pre code {
+            color: #333333;
+        }
+        .ai-message pre code.language-python,
+        .ai-message pre code.language-javascript,
+        .ai-message pre code.language-html,
+        .ai-message pre code.language-css,
+        .ai-message pre code.language-text {
+            color: inherit;
+            white-space: pre;
+            tab-size: 4;
+        }
+        
+
+        .ai-message pre .copy-button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 4px 8px;
+            transition: background-color 0.3s ease;
+            z-index: 2;
+        }
+        .light-theme .ai-message pre .copy-button {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: #333333;
+        }
+        .ai-message pre .copy-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .light-theme .ai-message pre .copy-button:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        .ai-message pre .copy-button.copied {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .light-theme .ai-message pre .copy-button.copied {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+
+        .input-container.moved-down {
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+        
+
+        .profile-modal.active,
+        .auth-modal.active {
+            display: flex;
+        }
+        
+
+        .dropdown-menu.active {
+            display: block;
+        }
+        
+
+        .title.hidden {
+            display: none;
+        }
+        
+
+        .example-buttons.hidden {
+            display: none;
+        }
+        
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 24px;
+                top: 30%;
+            }
+            .example-buttons {
+                bottom: 30%;
+                gap: 6px;
+                max-width: 350px;
+            }
+            .example-button {
+                padding: 10px 10px;
+                font-size: 12px;
+                gap: 5px;
+                max-width: 100px;
+                min-width: 150px;
+            }
+            .input-container {
+                width: 98vw;
+                max-width: 99vw;
+                height: 90px;
+                border-radius: 15px;
+                padding: 8px;
+            }
+            .input-text {
+                font-size: 14px;
+            }
+            .message-container {
+                padding: 0 5px;
+                padding-bottom: 100px;
+            }
+            .user-message, .ai-message {
+                font-size: 14px;
+                max-width: 100%;
+            }
+
+            .circle-button {
+                width: 32px;
+                height: 32px;
+            }
+            .circle-button img {
+                width: 16px;
+                height: 16px;
+            }
+            .think-button {
+                height: 22px;
+                padding: 0 8px;
+                font-size: 11px;
+                gap: 4px;
+            }
+            .think-button svg {
+                width: 10px;
+                height: 10px;
+            }
+
+            .example-buttons {
+                display: none !important;
+            }
+
+            #chatList {
+                width: 90vw !important;
+                min-width: 0 !important;
+                border-top-right-radius: 14px !important;
+                border-bottom-right-radius: 14px !important;
+            }
+            #showChatMenuBtn {
+                left: 8px !important;
+                top: 8px !important;
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 18px !important;
+            }
+            .input-container {
+                bottom: 0 !important;
+                left: 50% !important;
+                top: auto !important;
+                transform: translateX(-50%) !important;
+                margin: 0 !important;
+            }
+            #title {
+                position: absolute;
+                top: 16%;
+                left: 50%;
+                transform: translate(-50%, 0);
+                font-size: 2.2em;
+                width: 100vw;
+                max-width: 100vw;
+                z-index: 2;
+                display: block;
+            }
+            #exampleButtons {
+                position: absolute;
+                top: 32%;
+                left: 50%;
+                transform: translate(-50%, 0);
+                width: 92vw;
+                max-width: 98vw;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px 12px;
+                z-index: 2;
+                overflow-x: visible !important;
+                align-items: stretch;
+                justify-items: center;
+            }
+            #exampleButtons button {
+                width: 98%;
+                max-width: 180px;
+                margin: 0 auto;
+                font-size: 1em;
+                white-space: normal;
+            }
+            #exampleButtons button:nth-child(5) {
+                grid-column: 1 / span 2;
+                justify-self: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 20px;
+                top: 25%;
+            }
+            .example-buttons {
+                bottom: 25%;
+                gap: 5px;
+                max-width: 280px;
+            }
+            .example-button {
+                padding: 8px 8px;
+                font-size: 11px;
+                gap: 4px;
+                max-width: 80px;
+                min-width: 90px;
+            }
+            .input-container {
+                height: 100px;
+                border-radius: 15px;
+                padding: 10px;
+            }
+            .input-text {
+                font-size: 14px;
+            }
+            .message-container {
+                padding: 0 10px;
+                padding-bottom: 120px;
+            }
+            .user-message, .ai-message {
+                font-size: 14px;
+                max-width: 100%;
+            }
+
+            .circle-button {
+                width: 32px;
+                height: 32px;
+            }
+            .circle-button img {
+                width: 16px;
+                height: 16px;
+            }
+            .think-button {
+                height: 26px;
+                padding: 0 10px;
+                font-size: 12px;
+                gap: 5px;
+            }
+            .think-button svg {
+                width: 11px;
+                height: 11px;
+            }
+            .auth-modal-content {
+                padding: 18px 8px 14px 8px;
+                max-width: 98vw;
+            }
+        }
+        
+        html, body {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+
+        .ai-message pre {
+            background-color: #1e1e1e !important;
+            color: #e6e6e6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .light-theme .ai-message pre {
+            background-color: #f5f5f5 !important;
+            color: #333;
+        }
+
+
+        .ai-message pre, .ai-message pre code {
+            background-clip: padding-box;
+        }
+
+        .ai-message pre code {
+            background: none !important;
+            color: inherit;
+            padding: 0;
+            border-radius: 0;
+            font-size: 1em;
+        }
+        body, .user-message, .ai-message, .input-text, .input-container, .message-container, .profile-modal, .auth-modal, .dropdown-menu, .title, .example-buttons, .error-message, .loading-icon, .auth-modal-content, .think-button, .circle-button, .chatList, .copy-button {
+            font-family: 'Merriweather', serif !important;
+        }
+
+
+        .user-message:lang(he), .ai-message:lang(he) {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        }
+
+
+        .input-container {
+            position: relative;
+            z-index: 10;
+        }
+        .input-container::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 36px;
+            z-index: -2;
+            background: linear-gradient(270deg, #ff0080, #7928ca, #007cf0, #00dfd8, #ff0080);
+            background-size: 400% 400%;
+            animation: rainbow-outline 6s linear infinite;
+        }
+        .input-container::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 30px;
+            background: #242628;
+            z-index: -1;
+
+        }
+        @keyframes rainbow-outline {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .input-container.moved-down::before,
+        .input-container.moved-down::after {
+            display: none !important;
+        }
+        .input-container.no-outline::before,
+        .input-container.no-outline::after {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            #exampleButtons {
+                overflow-x: auto;
+                flex-wrap: nowrap !important;
+                justify-content: flex-start !important;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                padding-bottom: 8px;
+            }
+            #exampleButtons button {
+                min-width: 120px;
+                flex: 0 0 auto;
+            }
+        }
+        #title {
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s cubic-bezier(0.4,0,0.2,1);
+            will-change: transform, opacity;
+        }
+        #title.shrink {
+            transform: scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+        /* Fade-in overlay for background image */
+
+    </style>
+</head>
+<body class="bg-dark-bg m-0 h-screen flex flex-col font-merriweather font-normal overflow-hidden transition-colors duration-300 relative">
+
+    <div class="flex justify-end items-center px-5 py-2.5 sticky top-0 bg-dark-header z-10 transition-colors duration-300 flex-shrink-0 h-15 light-theme:bg-light-header">
+        <div class="relative inline-block flex items-center gap-2">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;"><i class="fab fa-github" style="font-size:22px;color:#fff;"></i></a>
+            <div class="bg-white rounded-full w-10 h-10 flex justify-center items-center text-black text-xl cursor-pointer transition-colors duration-300 light-theme:bg-gray-800 light-theme:text-white" onclick="toggleDropdown()">
+                <i class="fas fa-user"></i>
+            </div>
+            <button class="ml-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm font-semibold shadow transition hover:bg-blue-700" onclick="openCustomizeModal()">Customize ✨</button>
+            <div class="hidden absolute top-12 right-0 bg-dark-card rounded-lg shadow-lg min-w-36 z-12 transition-colors duration-300 light-theme:bg-light-card" id="dropdownMenu">
+                <div class="px-4 py-2.5 text-white text-sm text-left cursor-default transition-colors duration-300 light-theme:text-gray-800">Free User</div>
+                <button class="px-4 py-2.5 text-white text-sm bg-transparent border-none text-left w-full cursor-pointer font-inter font-normal transition-colors duration-300 light-theme:text-gray-800 hover:bg-dark-hover light-theme:hover:bg-light-hover" onclick="newChat()">New Chat</button>
+                <button class="px-4 py-2.5 text-white text-sm bg-transparent border-none text-left w-full cursor-pointer font-inter font-normal transition-colors duration-300 light-theme:text-gray-800 hover:bg-dark-hover light-theme:hover:bg-light-hover" id="theme-button" onclick="toggleTheme()">Switch to Light Theme</button>
+                <button class="px-4 py-2.5 text-white text-sm bg-transparent border-none text-left w-full cursor-pointer font-inter font-normal transition-colors duration-300 light-theme:text-gray-800 hover:bg-dark-hover light-theme:hover:bg-light-hover" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="text-white text-3xl text-center py-5 font-inter font-light absolute top-1/3 left-1/2 transform -translate-x-1/2 z-10 transition-all duration-300 w-11/12 max-w-4xl light-theme:text-gray-800 hidden" id="title">Bixx AI By Omer</div>
+    
+
+    <div class="flex-grow overflow-y-auto">
+        <div class="w-full max-w-4xl mx-auto px-5 flex flex-col relative gap-5 pb-44 pt-15" id="messageContainer"></div>
+    </div>
+    
+
+    <div class="input-container w-11/12 max-w-4xl h-32 bg-dark-card rounded-3xl flex flex-col justify-between p-4 shadow-lg fixed bottom-1/2 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-10 transition-all duration-300 border border-white/10 light-theme:bg-light-card light-theme:shadow-md" id="inputContainer">
+        <textarea class="text-gray-300 text-base flex-grow border-none bg-transparent outline-none whitespace-pre-wrap font-inter font-normal transition-colors duration-300 px-2.5 w-full box-border light-theme:text-gray-800" id="userInput" placeholder="Ask Bixx Anything" rows="2" style="resize: none;"></textarea>
+        <div style="position: relative; width: 100%; height: 100%;">
+            <button onclick="sendMessage()" class="bg-white rounded-full w-10 h-10 flex justify-center items-center text-black text-4xl font-bold p-0 border-none cursor-pointer light-theme:bg-gray-800 light-theme:text-white">
+                <img src="up-arrow.png" alt="Send" class="w-5 h-5 object-contain">
+            </button>
+        </div>
+    </div>
+    
+
+    <div class="flex gap-2 justify-center mt-5 opacity-100 transition-opacity duration-300 absolute bottom-1/3 left-1/2 transform -translate-x-1/2 w-11/12 max-w-96 px-5 flex-nowrap hidden" id="exampleButtons">
+        <button class="bg-dark-input text-white border border-white/30 py-3 px-3 rounded-2xl cursor-pointer font-inter text-sm font-medium transition-all duration-300 flex items-center gap-1.5 min-w-36 justify-center shadow-none whitespace-nowrap flex-1 max-w-30 light-theme:bg-white light-theme:text-gray-800 light-theme:border-black/30 light-theme:hover:border-black/50 light-theme:hover:bg-gray-100" onclick="useExamplePrompt('Give me an inspiring story')">
+            <i class="fas fa-lightbulb text-yellow-400" style="color:#FFD600;"></i>
+            Get Inspired
+        </button>
+        <button class="bg-dark-input text-white border border-white/30 py-3 px-3 rounded-2xl cursor-pointer font-inter text-sm font-medium transition-all duration-300 flex items-center gap-1.5 min-w-36 justify-center shadow-none whitespace-nowrap flex-1 max-w-30 light-theme:bg-white light-theme:text-gray-800 light-theme:border-black/30 light-theme:hover:border-black/50 light-theme:hover:bg-gray-100" onclick="useExamplePrompt('Tell me a joke')">
+            <i class="fas fa-laugh-beam text-pink-500" style="color:#FF4081;"></i>
+            See a Joke
+        </button>
+        <button class="bg-dark-input text-white border border-white/30 py-3 px-3 rounded-2xl cursor-pointer font-inter text-sm font-medium transition-all duration-300 flex items-center gap-1.5 min-w-36 justify-center shadow-none whitespace-nowrap flex-1 max-w-30 light-theme:bg-white light-theme:text-gray-800 light-theme:border-black/30 light-theme:hover:border-black/50 light-theme:hover:bg-gray-100" onclick="useExamplePrompt('Suggest a fun recipe')">
+            <i class="fas fa-utensils text-green-400" style="color:#4CAF50;"></i>
+            Try a Recipe
+        </button>
+        <button class="bg-dark-input text-white border border-white/30 py-3 px-3 rounded-2xl cursor-pointer font-inter text-sm font-medium transition-all duration-300 flex items-center gap-1.5 min-w-36 justify-center shadow-none whitespace-nowrap flex-1 max-w-30 light-theme:bg-white light-theme:text-gray-800 light-theme:border-black/30 light-theme:hover:border-black/50 light-theme:hover:bg-gray-100" onclick="useExamplePrompt('Give me a motivational quote')">
+            <i class="fas fa-quote-left text-blue-400" style="color:#42A5F5;"></i>
+            Get a Quote
+        </button>
+        <button class="bg-dark-input text-white border border-white/30 py-3 px-3 rounded-2xl cursor-pointer font-inter text-sm font-medium transition-all duration-300 flex items-center gap-1.5 min-w-36 justify-center shadow-none whitespace-nowrap flex-1 max-w-30 light-theme:bg-white light-theme:text-gray-800 light-theme:border-black/30 light-theme:hover:border-black/50 light-theme:hover:bg-gray-100" onclick="useExamplePrompt('Tell me a fun fact')">
+            <i class="fas fa-star text-purple-400" style="color:#AB47BC;"></i>
+            Fun Fact
+        </button>
+    </div>
+
+
+    <div class="hidden fixed inset-0 bg-black/50 z-50 justify-center items-center" id="profileModal">
+        <div class="bg-dark-card p-6 rounded-xl w-11/12 max-w-96 shadow-xl light-theme:bg-white">
+            <div class="flex justify-between items-center mb-5">
+                <h3 class="text-white text-xl font-semibold m-0 light-theme:text-gray-800">Customize Your Profile</h3>
+                <button class="bg-transparent border-none text-white text-2xl cursor-pointer p-0 light-theme:text-gray-800" onclick="closeProfileModal()">&times;</button>
+            </div>
+            <form id="profileForm" onsubmit="saveProfile(event)">
+                <div class="mb-4">
+                    <label class="block text-white mb-2 text-sm light-theme:text-gray-800" for="userName">Your Name</label>
+                    <input type="text" id="userName" class="w-full p-2.5 border border-white/20 rounded-md bg-dark-input text-white text-sm transition-colors duration-300 light-theme:bg-gray-100 light-theme:border-gray-300 light-theme:text-gray-800 focus:outline-none focus:border-blue-500" placeholder="Enter your name">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-white mb-2 text-sm light-theme:text-gray-800" for="userOccupation">Your Occupation</label>
+                    <input type="text" id="userOccupation" class="w-full p-2.5 border border-white/20 rounded-md bg-dark-input text-white text-sm transition-colors duration-300 light-theme:bg-gray-100 light-theme:border-gray-300 light-theme:text-gray-800 focus:outline-none focus:border-blue-500" placeholder="Enter your occupation">
+                </div>
+                <button type="submit" class="bg-blue-500 text-white border-none py-3 px-6 rounded-md text-sm font-medium cursor-pointer w-full transition-colors duration-300 hover:bg-blue-600">Save Profile</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="hidden fixed inset-0 bg-black/60 z-50 flex justify-center items-center" id="authModal">
+        <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-10 shadow-2xl w-full max-w-md mx-4 relative flex flex-col items-stretch border border-slate-700/50 backdrop-blur-sm">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-white text-3xl font-bold m-0 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Welcome to Bixx AI</h3>
+                <button class="bg-transparent border-none text-slate-400 text-3xl cursor-pointer hover:text-white transition-colors" onclick="closeAuthModal()">&times;</button>
+            </div>
+            <form id="authForm" class="space-y-6">
+                <div>
+                    <label class="text-slate-300 text-sm mb-2 block font-medium" for="authEmail">Email Address</label>
+                    <input type="email" id="authEmail" class="w-full p-4 rounded-xl border border-slate-600 bg-slate-800/50 text-white text-base placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all" placeholder="Enter your email" required>
+                </div>
+                <div>
+                    <label class="text-slate-300 text-sm mb-2 block font-medium" for="authPassword">Password</label>
+                    <input type="password" id="authPassword" class="w-full p-4 rounded-xl border border-slate-600 bg-slate-800/50 text-white text-base placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all" placeholder="Enter your password" required>
+                </div>
+                <div class="flex gap-3 pt-2">
+                  <button type="button" class="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-none rounded-xl py-4 text-base font-semibold cursor-pointer w-full transition-all duration-200 hover:from-blue-600 hover:to-blue-700 transform hover:scale-[1.02] shadow-lg hover:shadow-xl" onclick="handleSignIn()">Sign In</button>
+                  <button type="button" class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white border-none rounded-xl py-4 text-base font-semibold cursor-pointer w-full transition-all duration-200 hover:from-emerald-600 hover:to-emerald-700 transform hover:scale-[1.02] shadow-lg hover:shadow-xl" onclick="handleSignUp()">Sign Up</button>
+                </div>
+            </form>
+            <div class="text-center text-slate-400 my-6 text-sm">
+                <span class="bg-slate-800/50 px-4 py-2 rounded-full">✨ Experience AI-powered conversations</span>
+            </div>
+            <div class="text-red-400 text-sm mt-4 min-h-6 text-center font-medium" id="authErrorMessage"></div>
+        </div>
+    </div>
+
+    <!-- Customization Modal -->
+    <div id="customizeModal" class="hidden fixed inset-0 bg-black/40 z-50 flex justify-center items-center" style="backdrop-filter: blur(6px);">
+      <div class="custom-modal-box rounded-2xl p-8 w-full max-w-md mx-4 relative flex flex-col items-stretch border" style="background: #000; color: #fff; border: 1.5px solid #4a5568; box-shadow: 0 8px 32px rgba(0,0,0,0.35); backdrop-filter: blur(16px); position: relative;">
+        <button class="absolute top-4 right-4 text-2xl" onclick="closeCustomizeModal()" style="background: none; border: none; color: #b0b0b0; font-weight: bold; transition: color 0.2s; z-index:2;">&times;</button>
+        <h2 class="text-2xl font-bold mb-6 text-center" style="color: inherit; font-family: inherit; z-index:2;">Customize Your Experience</h2>
+        <form id="customizeForm" class="space-y-5" style="z-index:2;">
+          <div>
+            <label class="block font-semibold mb-2" style="color: #e0e0e0; font-family: inherit;">Your Name</label>
+            <input type="text" id="customUserName" class="w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter your name" style="background: rgba(22,22,24,0.95); color: #fff; border: 1px solid #374151; font-family: inherit;">
+          </div>
+          <div>
+            <label class="block font-semibold mb-2" style="color: #e0e0e0; font-family: inherit;">Font</label>
+            <select id="customFont" class="w-full p-2 rounded">
+              <option value="merriweather">Merriweather (Default)</option>
+              <option value="inter">Inter</option>
+              <option value="arial">Arial</option>
+              <option value="serif">Serif</option>
+              <option value="sans-serif">Sans-serif</option>
+              <option value="roboto">Roboto</option>
+              <option value="georgia">Georgia</option>
+              <option value="courier">Courier New</option>
+              <option value="comic">Comic Sans MS</option>
+              <option value="times">Times New Roman</option>
+              <option value="verdana">Verdana</option>
+              <option value="tahoma">Tahoma</option>
+              <option value="trebuchet">Trebuchet MS</option>
+              <option value="lucida">Lucida Console</option>
+            </select>
+          </div>
+          <div class="flex flex-col gap-4 mt-6">
+            <span class="block font-semibold mb-1 text-center" style="color: #e0e0e0; font-family: inherit;">Choose Website Background</span>
+            <div class="flex flex-row gap-4 justify-center">
+              <button type="button" class="bg-img-btn" onclick="chooseBg('https://iili.io/FV87mZJ.jpg')" style="border: 2px solid #374151; border-radius: 12px; overflow: hidden; padding: 0; width: 120px; height: 80px; background: none; cursor: pointer;">
+                <img src="https://iili.io/FV87mZJ.jpg" alt="Background 1" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              </button>
+              <button type="button" class="bg-img-btn" onclick="chooseBg('https://iili.io/FV805UQ.jpg')" style="border: 2px solid #374151; border-radius: 12px; overflow: hidden; padding: 0; width: 120px; height: 80px; background: none; cursor: pointer;">
+                <img src="https://iili.io/FV805UQ.jpg" alt="Background 2" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              </button>
+              <button type="button" class="bg-img-btn" onclick="chooseBg('https://iili.io/FVSqrYv.jpg')" style="border: 2px solid #374151; border-radius: 12px; overflow: hidden; padding: 0; width: 120px; height: 80px; background: none; cursor: pointer;">
+                <img src="https://iili.io/FVSqrYv.jpg" alt="Background 3" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+              </button>
+            </div>
+          </div>
+          <button type="button" id="customSaveBtn" class="w-full py-2 text-white rounded font-semibold hover:opacity-90 transition" style="font-family: inherit; background: #2563eb; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+// Minimal stateless chatbot logic for Vercel
+        let chatMessages = [];
+        let firstMessageSent = false;
+        let imageIdCounter = 0; // <-- Add this line
+
+        // Initialize empty chat - no localStorage persistence
+        renderMessages(); // Ensure messages are shown on page load
+
+        function formatText(text) {
+            // Always show message text and placeholder together
+            const imageMatch = text.match(/_image:\s*([^_]*)_/);
+            let processed = '';
+            let lastIndex = 0;
+            const codeBlockRegex = /```(\w*)\n([\s\S]*?)```/g;
+            let match;
+            while ((match = codeBlockRegex.exec(text)) !== null) {
+                // Non-code before this code block
+                const nonCode = text.slice(lastIndex, match.index);
+                processed += processImageAndNonCode(nonCode);
+                // Code block (do not format)
+                const language = match[1] || 'text';
+                const code = match[2];
+                processed += `<pre><button class=\"copy-button\" onclick=\"copyCode(this)\">Copy</button><code class=\"language-${language}\">${escapeHTML(code)}</code></pre>`;
+                lastIndex = codeBlockRegex.lastIndex;
+            }
+            // Remaining non-code after last code block
+            processed += processImageAndNonCode(text.slice(lastIndex));
+            return processed;
+        }
+
+        function processImageAndNonCode(text) {
+            const imageMatch = text.match(/_image:\s*([^_]*)_/);
+            if (imageMatch) {
+                const id = 'img-load-' + (imageIdCounter++);
+                const before = text.slice(0, imageMatch.index);
+                const after = text.slice(imageMatch.index + imageMatch[0].length);
+                return `${formatNonCode(before)}<div class=\"image-loading-placeholder\" id=\"${id}\" data-image-placeholder style=\"width:100%;max-width:500px;height:auto;aspect-ratio:1/1;margin:10px auto;display:flex;align-items:center;justify-content:center;flex-direction:column;\">\n    <div class=\\\"loading-spinner\\\"></div>\n    <p>Generating image...</p>\n</div>${formatNonCode(after)}`;
+            }
+            return formatNonCode(text);
+        }
+
+        function formatNonCode(text) {
+            text = text.replace(/^###\s?(.*)$/gm, '<h3>$1</h3>');
+            text = text.replace(/^##\s?(.*)$/gm, '<h2>$1</h2>');
+            text = text.replace(/^#\s?(.*)$/gm, '<h1>$1</h1>');
+
+            text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+            text = text.replace(/~~(.*?)~~/g, '<del>$1</del>');
+
+            text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+            text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+
+            text = text.replace(/(?:^|\n)(- .+(?:\n- .+)*)/g, function(match) {
+                const items = match.trim().split('\n').map(line => line.replace(/^- /, '').trim());
+                return '<ul>' + items.map(item => `<li>${item}</li>`).join('') + '</ul>';
+            });
+
+            text = text.replace(/(?:^|\n)((?:\d+\..+(?:\n\d+\..+)*)+)/g, function(match) {
+                const items = match.trim().split('\n').map(line => line.replace(/^\d+\.\s*/, '').trim());
+                return '<ol>' + items.map(item => `<li>${item}</li>`).join('') + '</ol>';
+            });
+
+            text = text.replace(/\n/g, '<br>');
+
+            return text;
+        }
+
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling;
+            const code = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy code:', err);
+                button.textContent = 'Failed to copy';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+
+function escapeHTML(text) {
+    return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
+
+function detectLanguage(text) {
+            if (/[\u0590-\u05FF]/.test(text)) return 'he';
+            if (/[\u0600-\u06FF]/.test(text)) return 'ar';
+            if (/[\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFF]/.test(text)) return 'fa';
+            if (/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/.test(text)) return 'ur';
+            if (/[\u0900-\u097F]/.test(text)) return 'hi';
+            if (/[\u0E00-\u0E7F]/.test(text)) return 'th';
+            if (/[\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]/.test(text)) return 'ko';
+            if (/[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/.test(text)) return 'ja';
+            if (/[\u4E00-\u9FFF]/.test(text)) return 'zh';
+            return 'en';
+        }
+
+async function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim();
+    if (!message) return;
+    chatMessages.push({ role: 'user', content: message });
+    renderMessages();
+    input.value = '';
+    setTimeout(scrollToBottom, 100);
+    // Remove rainbow outline after first message (mobile and desktop)
+    if (!firstMessageSent) {
+        document.getElementById('inputContainer').classList.add('no-outline');
+        firstMessageSent = true;
+        // Remove exampleButtons from DOM after first message
+        const exampleButtons = document.getElementById('exampleButtons');
+        if (exampleButtons) exampleButtons.remove();
+        // Animate title to size 0
+        const title = document.getElementById('title');
+        if (title) title.classList.add('shrink');
+    }
+    // Always hide title after first message
+    // (keep for safety, but animation will handle it visually)
+    const title = document.getElementById('title');
+    if (title) title.classList.add('hidden');
+    try {
+        const userName = localStorage.getItem('customUserName') || '';
+        const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                message,
+                chatHistory: chatMessages,
+                userName // send userName to backend
+            })
+        });
+        const data = await res.json();
+        
+        // Check if there's an image base64 in the response
+        if (data.imageBase64) {
+            chatMessages.push({ 
+                role: 'assistant', 
+                content: data.reply,
+                imageBase64: data.imageBase64 
+            });
+        } else {
+            chatMessages.push({ role: 'assistant', content: data.reply });
+        }
+        
+        renderMessages();
+        setTimeout(scrollToBottom, 100);
+    } catch (err) {
+        chatMessages.push({ role: 'assistant', content: 'Sorry, there was an error.' });
+        renderMessages();
+    }
+}
+
+function renderMessages() {
+    const messageContainer = document.getElementById('messageContainer');
+    messageContainer.innerHTML = '';
+    chatMessages.forEach((msg, idx) => {
+        const div = document.createElement('div');
+        div.className = msg.role === 'user' ? 'user-message' : 'ai-message';
+        // Detect language and set lang attribute for Hebrew
+        const lang = detectLanguage(msg.content);
+        if (lang === 'he') {
+            div.setAttribute('lang', 'he');
+            div.style.direction = 'rtl';
+            div.style.textAlign = 'right';
+            // Force all children to inherit RTL and right alignment
+            setTimeout(() => {
+                div.querySelectorAll('*').forEach(child => {
+                    child.style.direction = 'rtl';
+                    child.style.textAlign = 'right';
+                });
+            }, 0);
+        }
+        div.innerHTML = formatText(msg.content);
+        // If there's an image, replace the loading placeholder with the image
+        if (msg.imageBase64) {
+            const placeholder = div.querySelector('[data-image-placeholder]');
+            if (placeholder) {
+                let imageSrc = msg.imageBase64;
+                if (!imageSrc.startsWith('data:')) {
+                    imageSrc = 'data:image/png;base64,' + imageSrc;
+                }
+                fetch(imageSrc)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        const url = URL.createObjectURL(blob);
+                        placeholder.innerHTML = `<img src=\"${url}\" alt=\"Generated image\" class=\"generated-image\" style=\"width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px;\">`;
+                    });
+            }
+        }
+        messageContainer.appendChild(div);
+    });
+    if (chatMessages.length > 0) {
+        moveInputDown();
+    } else {
+        moveInputMiddle();
+    }
+}
+
+function scrollToBottom() {
+            const messageContainer = document.getElementById('messageContainer');
+            const scrollTarget = messageContainer.parentElement;
+            setTimeout(() => {
+                if (scrollTarget && scrollTarget.scrollTo) {
+                    scrollTarget.scrollTo({
+                        top: scrollTarget.scrollHeight,
+                behavior: 'auto'
+                    });
+                }
+                document.getElementById('inputContainer').scrollIntoView({
+            behavior: 'auto',
+                    block: 'end'
+                });
+            }, 10);
+        }
+
+document.getElementById('userInput').addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        sendMessage();
+    } else if (e.key === 'Enter' && !e.shiftKey) {
+        // Let Enter insert a newline
+    }
+});
+
+        function useExamplePrompt(prompt) {
+            const input = document.getElementById('userInput');
+            input.value = prompt;
+            input.focus();
+        }
+
+        function toggleDropdown() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            if (dropdownMenu) {
+            dropdownMenu.classList.toggle('hidden');
+            }
+        }
+
+        function newChat() {
+            chatMessages = [];
+            renderMessages();
+            moveInputMiddle();
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            if (dropdownMenu) dropdownMenu.classList.add('hidden');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+            // No need to manually update every element, CSS handles it via variables/classes
+            const themeButton = document.getElementById('theme-button');
+            if (themeButton) {
+            const isLight = document.body.classList.contains('light-theme');
+            themeButton.textContent = isLight ? 'Switch to Dark Theme' : 'Switch to Light Theme';
+            }
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            if (dropdownMenu) dropdownMenu.classList.add('hidden');
+        }
+
+        function logout() {
+            // Simple logout - just clear messages and reset
+            chatMessages = [];
+            renderMessages();
+            moveInputMiddle();
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            if (dropdownMenu) dropdownMenu.classList.add('hidden');
+        }
+
+        function closeProfileModal() {
+            const modal = document.getElementById('profileModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function closeAuthModal() {
+            const modal = document.getElementById('authModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function handleSignIn() {
+            // Placeholder - auth removed
+            closeAuthModal();
+        }
+
+        function handleSignUp() {
+            // Placeholder - auth removed
+            closeAuthModal();
+        }
+
+        function moveInputDown() {
+            const inputContainer = document.getElementById('inputContainer');
+            inputContainer.classList.add('moved-down');
+            const title = document.getElementById('title');
+            if (title) title.classList.add('hidden');
+            const exampleButtons = document.getElementById('exampleButtons');
+            if (exampleButtons) exampleButtons.classList.add('hidden');
+        }
+        function moveInputMiddle() {
+            const inputContainer = document.getElementById('inputContainer');
+            inputContainer.classList.remove('moved-down');
+            // Show title and example buttons only if there are no messages
+            if (chatMessages.length === 0) {
+            const title = document.getElementById('title');
+            if (title) title.classList.remove('hidden');
+            const exampleButtons = document.getElementById('exampleButtons');
+            if (exampleButtons) exampleButtons.classList.remove('hidden');
+            } else {
+                const title = document.getElementById('title');
+                if (title) title.classList.add('hidden');
+                const exampleButtons = document.getElementById('exampleButtons');
+                if (exampleButtons) exampleButtons.classList.add('hidden');
+            }
+        }
+
+        function openCustomizeModal() {
+  document.getElementById('customizeModal').classList.remove('hidden');
+  // Load current settings
+  document.getElementById('customUserName').value = localStorage.getItem('customUserName') || '';
+  document.getElementById('customFont').value = localStorage.getItem('customFont') || 'merriweather';
+  // Animate background image if set
+  const bg = localStorage.getItem('customBgImage');
+  if (bg) fadeInBackground(bg);
+}
+function closeCustomizeModal() {
+  document.getElementById('customizeModal').classList.add('hidden');
+}
+function saveCustomSettings() {
+  const name = document.getElementById('customUserName').value;
+  const font = document.getElementById('customFont').value;
+  // const bgColor = document.getElementById('customBgColor').value; // Removed color pickers
+  // const textColor = document.getElementById('customTextColor').value; // Removed color pickers
+  localStorage.setItem('customUserName', name);
+  localStorage.setItem('customFont', font);
+  // localStorage.setItem('customBgColor', bgColor); // Removed color pickers
+  // localStorage.setItem('customTextColor', textColor); // Removed color pickers
+  applyCustomSettings();
+  closeCustomizeModal();
+}
+function applyCustomSettings() {
+  const font = localStorage.getItem('customFont') || 'merriweather';
+  setFontFamily(font);
+  // Set background image if chosen
+  const bg = localStorage.getItem('customBgImage');
+  if (bg) {
+    document.body.style.background = `url('${bg}') center/cover no-repeat fixed`;
+  } else {
+    document.body.style.background = '';
+  }
+}
+// Apply settings on load
+applyCustomSettings();
+
+function fadeInBackground(url) {
+  // Remove any existing overlay
+  let overlay = document.getElementById('bg-fade-overlay');
+  if (overlay) overlay.remove();
+  // Create overlay
+  overlay = document.createElement('div');
+  overlay.id = 'bg-fade-overlay';
+  overlay.style.backgroundImage = `url('${url}')`;
+  document.body.appendChild(overlay);
+  // Force reflow for transition
+  void overlay.offsetWidth;
+  overlay.style.opacity = '1';
+  setTimeout(() => {
+    document.body.style.background = `url('${url}') center/cover no-repeat fixed`;
+    overlay.style.opacity = '0';
+    setTimeout(() => overlay.remove(), 700);
+  }, 700);
+}
+
+function chooseBg(url) {
+  fadeInBackground(url);
+  localStorage.setItem('customBgImage', url);
+  // Optionally, highlight the selected button
+  document.querySelectorAll('.bg-img-btn').forEach(btn => btn.style.outline = 'none');
+  const btns = document.querySelectorAll('.bg-img-btn');
+  btns.forEach(btn => {
+    if (btn.querySelector('img').src.includes(url)) {
+      btn.style.outline = '3px solid #2563eb';
+    }
+  });
+}
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth <= 768) {
+                moveInputDown();
+                    } else {
+                moveInputMiddle();
+            }
+    // renderMessages(); // Already called above
+    // Apply background on load
+    const bg = localStorage.getItem('customBgImage');
+    if (bg) {
+      document.body.style.background = `url('${bg}') center/cover no-repeat fixed`;
+    }
+});
+    </script>
+    <script>
+      // Ensure the Save button in the Customize modal works
+      document.addEventListener('DOMContentLoaded', function() {
+        const saveBtn = document.getElementById('customSaveBtn');
+        if (saveBtn) {
+          saveBtn.addEventListener('click', saveCustomSettings);
+        }
+      });
+    </script>
+    <script>
+function setFontFamily(font) {
+  let fontFamily;
+  switch (font) {
+    case 'merriweather': fontFamily = "Merriweather, serif"; break;
+    case 'inter': fontFamily = "Inter, Arial, sans-serif"; break;
+    case 'arial': fontFamily = "Arial, Helvetica, sans-serif"; break;
+    case 'serif': fontFamily = "serif"; break;
+    case 'sans-serif': fontFamily = "sans-serif"; break;
+    case 'roboto': fontFamily = "Roboto, Arial, sans-serif"; break;
+    case 'georgia': fontFamily = "Georgia, serif"; break;
+    case 'courier': fontFamily = "'Courier New', Courier, monospace"; break;
+    case 'comic': fontFamily = "'Comic Sans MS', 'Comic Sans', cursive, sans-serif"; break;
+    case 'times': fontFamily = "'Times New Roman', Times, serif"; break;
+    case 'verdana': fontFamily = "Verdana, Geneva, sans-serif"; break;
+    case 'tahoma': fontFamily = "Tahoma, Geneva, sans-serif"; break;
+    case 'trebuchet': fontFamily = "'Trebuchet MS', Helvetica, sans-serif"; break;
+    case 'lucida': fontFamily = "'Lucida Console', Monaco, monospace"; break;
+    default: fontFamily = font;
+  }
+  document.documentElement.style.setProperty('--main-font-family', fontFamily);
+}
+</script>
+
+<style>
+.input-container {
+  background: var(--color-card-dark);
+  color: var(--color-text-dark);
+  transition: background 0.3s, color 0.3s;
+}
+body.light-theme .input-container {
+  background: var(--color-card-light);
+  color: var(--color-text-light);
+}
+.example-buttons, .example-button {
+  background: var(--color-card-dark);
+  color: var(--color-text-dark);
+  transition: background 0.3s, color 0.3s;
+}
+body.light-theme .example-buttons, body.light-theme .example-button {
+  background: var(--color-card-light);
+  color: var(--color-text-light);
+}
+</style>
+</body>
+</html>
